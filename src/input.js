@@ -17,6 +17,11 @@ class InputHandler {
           player.moveRight();
           break;
 
+        // down
+        case 40:
+          player.moveDown();
+          break;
+
         default:
           break;
       }
@@ -37,6 +42,11 @@ class InputHandler {
         // right
         case 39:
           if (player.speedX > 0) player.stop();
+          break;
+
+        // down
+        case 40:
+          player.stop();
           break;
 
         default:

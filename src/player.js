@@ -48,6 +48,10 @@ class Player {
     const thisPlayer = this;
     thisPlayer.speedX = thisPlayer.maxSpeed;
   }
+  moveDown() {
+    const thisPlayer = this;
+    thisPlayer.speedY = thisPlayer.maxSpeed;
+  }
 
   moveUp() {
     const thisPlayer = this;
