@@ -17,6 +17,7 @@ const updateAll = (timeStamp) => {
   drawCanvas();
 
   game.draw(context);
+  game.update(deltaTime);
 
   requestAnimationFrame(updateAll);
 };

@@ -5,14 +5,18 @@ class Player {
     thisPlayer.game = game;
     thisPlayer.gameWidth = game.gameWidth;
     thisPlayer.gameHeight = game.gameHeight;
-    thisPlayer.width = 30;
-    thisPlayer.height = 60;
+    thisPlayer.width = 20;
+    thisPlayer.height = 25;
     thisPlayer.position = {
       x: game.gameWidth / 2 - thisPlayer.width / 2,
       y: game.gameHeight - thisPlayer.height - 15,
     };
     thisPlayer.color = '#97E811';
-    thisPlayer.speed = 0;
+    thisPlayer.speedX = 0;
+    thisPlayer.speedY = 0;
+    thisPlayer.maxSpeed = 7;
+    thisPlayer.jumpPower = 0.8;
+    thisPlayer.runSpeed = 4;
   }
 
   draw(context) {
@@ -26,6 +30,43 @@ class Player {
       thisPlayer.height
     );
   }
+  update(deltaTime) {
+    const thisPlayer = this;
+
+    //if no dt no updates happening
+    if (!deltaTime) return;
+    thisPlayer.position.x += thisPlayer.speedX;
+    thisPlayer.position.y += thisPlayer.speedY;
+  }
+
+  moveLeft() {
+    const thisPlayer = this;
+    thisPlayer.speedX = -thisPlayer.maxSpeed;
+  }
+
+  moveRight() {
+    const thisPlayer = this;
+    thisPlayer.speedX = thisPlayer.maxSpeed;
+  }
+  moveDown() {
+    const thisPlayer = this;
+    thisPlayer.speedY = thisPlayer.maxSpeed;
+  }
+
+  moveUp() {
+    const thisPlayer = this;
+    // thisPlayer.speedX *= thisPlayer.game.airResitance;
+    // thisPlayer.speedY += thisPlayer.game.gravity;
+    thisPlayer.speedY -= thisPlayer.maxSpeed * thisPlayer.game.airResitance;
+  }
+  stop() {
+    const thisPlayer = this;
+    thisPlayer.speedX = 0;
+    thisPlayer.speedY = 0 * thisPlayer.game.gravity;
+  }
 }
+
+//TODO:
+/* gravity checkcs and jump */
 
 export default Player;
