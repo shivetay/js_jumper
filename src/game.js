@@ -1,11 +1,13 @@
 import Player from './player';
 import InputHandler from './input';
+import { buildLevel, level1 } from './levels';
 
 class Game {
   constructor(gameWidth, gameHeight) {
     const thisGame = this;
     thisGame.gameHeight = gameHeight;
     thisGame.gameWidth = gameWidth;
+    thisGame.bricks = [];
     thisGame.groundFriction = 0.8;
     thisGame.gravity = 0.6;
     thisGame.airResitance = 0.9;
@@ -16,7 +18,9 @@ class Game {
     thisGame.player = new Player(thisGame);
     new InputHandler(thisGame.player, thisGame);
 
-    thisGame.gameObjects = [thisGame.player];
+    thisGame.bricks = buildLevel(thisGame, level1);
+
+    thisGame.gameObjects = [thisGame.player, ...thisGame.bricks];
   }
 
   draw(context) {
