@@ -37,6 +37,28 @@ class Player {
     if (!deltaTime) return;
     thisPlayer.position.x += thisPlayer.speedX;
     thisPlayer.position.y += thisPlayer.speedY;
+
+    // wall checks
+    if (
+      thisPlayer.position.x > thisPlayer.gameWidth ||
+      thisPlayer.position.x < 0
+    ) {
+      // revert speed after hitting wall
+      console.log(thisPlayer.position.x);
+      console.log(thisPlayer.gameWidth);
+      thisPlayer.speedX = 0;
+    }
+
+    if (thisPlayer.position.y < 0) {
+      // revert speed after hitting wall
+      thisPlayer.speedY = 0;
+    }
+
+    //game bottom
+    // if (thisBall.position.y + thisBall.ballSize > thisBall.gameHeight) {
+    //   thisBall.game.lives--;
+    //   thisBall.reset();
+    // }
   }
 
   moveLeft() {
@@ -57,7 +79,8 @@ class Player {
     const thisPlayer = this;
     // thisPlayer.speedX *= thisPlayer.game.airResitance;
     // thisPlayer.speedY += thisPlayer.game.gravity;
-    thisPlayer.speedY -= thisPlayer.maxSpeed * thisPlayer.game.airResitance;
+    thisPlayer.speedY -= thisPlayer.maxSpeed;
+    // * thisPlayer.game.airResitance;
   }
   stop() {
     const thisPlayer = this;
