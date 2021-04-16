@@ -17,8 +17,13 @@ class Player {
     thisPlayer.speedX = 0;
     thisPlayer.speedY = 0;
     thisPlayer.maxSpeed = 7;
-    thisPlayer.jumpPower = 0.8;
+    thisPlayer.jumpPower = 11;
+    thisPlayer.jumpSpeed = {
+      x: 0,
+      y: 0,
+    };
     thisPlayer.runSpeed = 4;
+    thisPlayer.onGround = false;
   }
 
   draw(context) {
@@ -74,7 +79,7 @@ class Player {
     const thisPlayer = this;
     // thisPlayer.speedX *= thisPlayer.game.airResitance;
     // thisPlayer.speedY += thisPlayer.game.gravity;
-    thisPlayer.speedY -= thisPlayer.maxSpeed;
+    thisPlayer.speedY -= thisPlayer.jumpPower;
     // * thisPlayer.game.airResitance;
   }
   stop() {

@@ -36,11 +36,13 @@ class Brick {
       thisBrick.game.player.position.x + thisBrick.game.player.width;
 
     let brickTop = thisBrick.position.y;
+    let brickBottom = thisBrick.position.y + thisBrick.height;
     let brickLeft = thisBrick.position.x;
     let brickRight = thisBrick.position.x + thisBrick.width;
 
     if (
       playerBootom >= brickTop &&
+      playerTop <= brickBottom &&
       playerLeft >= brickLeft &&
       playerRight <= brickRight
     ) {
