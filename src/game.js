@@ -15,12 +15,13 @@ class Game {
 
   start() {
     const thisGame = this;
-    thisGame.player = new Player(thisGame);
-    new InputHandler(thisGame.player, thisGame);
 
     thisGame.bricks = buildLevel(thisGame, level1);
+    thisGame.player = new Player(thisGame);
 
     thisGame.gameObjects = [thisGame.player, ...thisGame.bricks];
+
+    new InputHandler(thisGame.player, thisGame);
   }
 
   draw(context) {

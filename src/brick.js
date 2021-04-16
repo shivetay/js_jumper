@@ -27,17 +27,26 @@ class Brick {
 
   update() {
     const thisBrick = this;
-    // if (thisBrick.game.player.position.x === thisBrick.position.x) {
-    //   thisBrick.game.player.speedX = 0;
-    // }
-    // if (thisBrick.game.player.position.y === thisBrick.position.y) {
-    //   thisBrick.game.player.speedY = 0;
-    // }
-    // if (collisionDetection(thisBrick.game.ball, thisBrick)) {
-    //   thisBrick.game.ball.speed.y = -thisBrick.game.ball.speed.y;
+    // brick player collison checks
+    let playerBootom =
+      thisBrick.game.player.position.y + thisBrick.game.player.height;
+    let playerTop = thisBrick.game.player.position.y;
+    let playerLeft = thisBrick.game.player.position.x;
+    let playerRight =
+      thisBrick.game.player.position.x + thisBrick.game.player.width;
 
-    //   thisBrick.markedForDeletion = true;
-    // }
+    let brickTop = thisBrick.position.y;
+    let brickLeft = thisBrick.position.x;
+    let brickRight = thisBrick.position.x + thisBrick.width;
+
+    if (
+      playerBootom >= brickTop &&
+      playerLeft >= brickLeft &&
+      playerRight <= brickRight
+    ) {
+      thisBrick.game.player.position.y =
+        thisBrick.position.y - thisBrick.game.player.height;
+    }
   }
 }
 
