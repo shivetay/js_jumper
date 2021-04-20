@@ -59,6 +59,15 @@ class Player {
       //stop when hit roof
       thisPlayer.position.y = 0;
     }
+    if (thisPlayer.position.y + thisPlayer.height > thisPlayer.gameHeight) {
+      thisPlayer.position.y = thisPlayer.gameHeight - thisPlayer.height;
+    }
+
+    // gravity checks
+
+    if (thisPlayer.onGround) {
+      thisPlayer.speedX *= thisPlayer.game.groundFriction;
+    }
   }
 
   moveLeft() {
@@ -80,12 +89,12 @@ class Player {
     // thisPlayer.speedX *= thisPlayer.game.airResitance;
     // thisPlayer.speedY += thisPlayer.game.gravity;
     thisPlayer.speedY -= thisPlayer.jumpPower;
+    thisPlayer.onGround = false;
     // * thisPlayer.game.airResitance;
   }
   stop() {
     const thisPlayer = this;
     thisPlayer.speedX = 0;
-    thisPlayer.speedY = 0 * thisPlayer.game.gravity;
   }
 }
 

@@ -50,6 +50,9 @@ class Brick {
       thisBrick.game.player.position.y =
         thisBrick.position.y - thisBrick.game.player.height;
     }
+    if ((playerBootom = brickTop)) {
+      thisBrick.game.player.onGround = true;
+    }
   }
 }
 
