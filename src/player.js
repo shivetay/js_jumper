@@ -67,7 +67,15 @@ class Player {
 
     if (thisPlayer.onGround) {
       thisPlayer.speedX *= thisPlayer.game.groundFriction;
+    } else {
+      // thisPlayer.speedX += thisPlayer.game.gravity;
+      // thisPlayer.speedY *= thisPlayer.game.airResitance;
+      console.log((thisPlayer.speedY *= thisPlayer.game.airResitance), 'air');
+      console.log((thisPlayer.speedX += thisPlayer.game.gravity), 'gravity');
     }
+
+    thisPlayer.position.x += thisPlayer.speedX;
+    thisPlayer.position.y += thisPlayer.speedY;
   }
 
   moveLeft() {
@@ -86,15 +94,13 @@ class Player {
 
   moveUp() {
     const thisPlayer = this;
-    // thisPlayer.speedX *= thisPlayer.game.airResitance;
-    // thisPlayer.speedY += thisPlayer.game.gravity;
     thisPlayer.speedY -= thisPlayer.jumpPower;
     thisPlayer.onGround = false;
-    // * thisPlayer.game.airResitance;
   }
   stop() {
     const thisPlayer = this;
     thisPlayer.speedX = 0;
+    thisPlayer.speedY -= thisPlayer.game.gravity;
   }
 }
 
