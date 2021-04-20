@@ -21,12 +21,13 @@ class Brick {
       thisBrick.position.x,
       thisBrick.position.y,
       thisBrick.width - thisBrick.gap,
-      thisBrick.height - thisBrick.gap
+      thisBrick.height
     );
   }
 
   update() {
     const thisBrick = this;
+
     // brick player collison checks
     let playerBootom =
       thisBrick.game.player.position.y + thisBrick.game.player.height;
