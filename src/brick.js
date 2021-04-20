@@ -21,23 +21,35 @@ class Brick {
       thisBrick.position.x,
       thisBrick.position.y,
       thisBrick.width - thisBrick.gap,
-      thisBrick.height - thisBrick.gap
+      thisBrick.height
     );
   }
 
   update() {
     const thisBrick = this;
-    // if (thisBrick.game.player.position.x === thisBrick.position.x) {
-    //   thisBrick.game.player.speedX = 0;
-    // }
-    // if (thisBrick.game.player.position.y === thisBrick.position.y) {
-    //   thisBrick.game.player.speedY = 0;
-    // }
-    // if (collisionDetection(thisBrick.game.ball, thisBrick)) {
-    //   thisBrick.game.ball.speed.y = -thisBrick.game.ball.speed.y;
 
-    //   thisBrick.markedForDeletion = true;
-    // }
+    // brick player collison checks
+    let playerBootom =
+      thisBrick.game.player.position.y + thisBrick.game.player.height;
+    let playerTop = thisBrick.game.player.position.y;
+    let playerLeft = thisBrick.game.player.position.x;
+    let playerRight =
+      thisBrick.game.player.position.x + thisBrick.game.player.width;
+
+    let brickTop = thisBrick.position.y;
+    let brickBottom = thisBrick.position.y + thisBrick.height;
+    let brickLeft = thisBrick.position.x;
+    let brickRight = thisBrick.position.x + thisBrick.width;
+
+    if (
+      playerBootom >= brickTop &&
+      playerTop <= brickBottom &&
+      playerLeft >= brickLeft &&
+      playerRight <= brickRight
+    ) {
+      thisBrick.game.player.position.y =
+        thisBrick.position.y - thisBrick.game.player.height;
+    }
   }
 }
 

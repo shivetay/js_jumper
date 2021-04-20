@@ -8,15 +8,22 @@ class Player {
     thisPlayer.width = 20;
     thisPlayer.height = 25;
     thisPlayer.position = {
-      x: game.gameWidth / 2 - thisPlayer.width / 2,
-      y: game.gameHeight - thisPlayer.height - 15,
+      // x: game.gameWidth / 2 - thisPlayer.width / 2,
+      // y: game.gameHeight - thisPlayer.height - 15,
+      x: 6,
+      y: 6,
     };
     thisPlayer.color = '#97E811';
     thisPlayer.speedX = 0;
     thisPlayer.speedY = 0;
     thisPlayer.maxSpeed = 7;
-    thisPlayer.jumpPower = 0.8;
+    thisPlayer.jumpPower = 11;
+    thisPlayer.jumpSpeed = {
+      x: 0,
+      y: 0,
+    };
     thisPlayer.runSpeed = 4;
+    thisPlayer.onGround = false;
   }
 
   draw(context) {
@@ -39,26 +46,19 @@ class Player {
     thisPlayer.position.y += thisPlayer.speedY;
 
     // wall checks
-    if (
-      thisPlayer.position.x > thisPlayer.gameWidth ||
-      thisPlayer.position.x < 0
-    ) {
-      // revert speed after hitting wall
-      console.log(thisPlayer.position.x);
-      console.log(thisPlayer.gameWidth);
-      thisPlayer.speedX = 0;
+    if (thisPlayer.position.x < 0) {
+      //stop player when hit wall
+      thisPlayer.position.x = 0;
+    }
+    if (thisPlayer.position.x + thisPlayer.width > thisPlayer.gameWidth) {
+      //stop player when hit wall not allowing to move player behind wall
+      thisPlayer.position.x = thisPlayer.gameWidth - thisPlayer.width;
     }
 
     if (thisPlayer.position.y < 0) {
-      // revert speed after hitting wall
-      thisPlayer.speedY = 0;
+      //stop when hit roof
+      thisPlayer.position.y = 0;
     }
-
-    //game bottom
-    // if (thisBall.position.y + thisBall.ballSize > thisBall.gameHeight) {
-    //   thisBall.game.lives--;
-    //   thisBall.reset();
-    // }
   }
 
   moveLeft() {
@@ -79,7 +79,7 @@ class Player {
     const thisPlayer = this;
     // thisPlayer.speedX *= thisPlayer.game.airResitance;
     // thisPlayer.speedY += thisPlayer.game.gravity;
-    thisPlayer.speedY -= thisPlayer.maxSpeed;
+    thisPlayer.speedY -= thisPlayer.jumpPower;
     // * thisPlayer.game.airResitance;
   }
   stop() {
