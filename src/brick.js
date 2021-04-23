@@ -27,7 +27,7 @@ class Brick {
   update() {
     const thisBrick = this;
 
-    // brick player collison checks
+    //* * brick player collison checks
     let playerBootom =
       thisBrick.game.player.position.y + thisBrick.game.player.height;
     let playerTop = thisBrick.game.player.position.y;
@@ -35,6 +35,7 @@ class Brick {
     let playerRight =
       thisBrick.game.player.position.x + thisBrick.game.player.width;
 
+    //* *   brick position
     let brickTop = thisBrick.position.y;
     let brickBottom = thisBrick.position.y + thisBrick.height;
     let brickLeft = thisBrick.position.x - thisBrick.game.player.width;
