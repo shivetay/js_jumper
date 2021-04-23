@@ -45,27 +45,27 @@ class Player {
     thisPlayer.position.x += thisPlayer.speedX;
     thisPlayer.position.y += thisPlayer.speedY;
 
-    // wall checks
+    //* wall checks
     if (thisPlayer.position.x < 0) {
-      //stop player when hit wall
+      //* stop player when hit wall
       thisPlayer.position.x = 0;
     }
     if (thisPlayer.position.x + thisPlayer.width > thisPlayer.gameWidth) {
-      //stop player when hit wall not allowing to move player behind wall
+      //* stop player when hit wall not allowing to move player behind wall
       thisPlayer.position.x = thisPlayer.gameWidth - thisPlayer.width;
     }
 
     if (thisPlayer.position.y < 0) {
-      //stop when hit roof
+      //* stop when hit roof
       thisPlayer.position.y = 0;
     }
 
     if (thisPlayer.position.y + thisPlayer.height > thisPlayer.gameHeight) {
+      //* stop bottom
       thisPlayer.position.y = thisPlayer.gameHeight - thisPlayer.height;
     }
 
-    //TODO: gravity checks
-
+    //* Gravity checks
     if (thisPlayer.onGround) {
       thisPlayer.speedX *= thisPlayer.game.groundFriction;
     } else {

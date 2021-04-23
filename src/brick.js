@@ -10,7 +10,6 @@ class Brick {
     thisBrick.gap = 1;
     thisBrick.position = position;
     thisBrick.color = '#E8E111';
-    thisBrick.markedForDeletion = false;
   }
 
   draw(context) {
@@ -38,8 +37,9 @@ class Brick {
 
     let brickTop = thisBrick.position.y;
     let brickBottom = thisBrick.position.y + thisBrick.height;
-    let brickLeft = thisBrick.position.x;
-    let brickRight = thisBrick.position.x + thisBrick.width;
+    let brickLeft = thisBrick.position.x - thisBrick.game.player.width;
+    let brickRight =
+      thisBrick.position.x + thisBrick.width + thisBrick.game.player.width;
 
     if (
       playerBootom >= brickTop &&
@@ -48,17 +48,8 @@ class Brick {
       playerRight <= brickRight
     ) {
       thisBrick.game.player.position.y =
-        thisBrick.position.y - thisBrick.game.player.height;
+        thisBrick.position.y + thisBrick.gap - thisBrick.game.player.height;
     }
-
-    // if ((playerBootom = brickTop)) {
-    //   thisBrick.game.player.onGround = true;
-    //   thisBrick.game.player.jumpSpeed.y = 0;
-    // } else {
-    //   thisBrick.game.player.onGround = true;
-    //   thisBrick.game.player.jumpSpeed.y *= thisPlayer.game.airResitance;
-    //   thisBrick.game.player.speedX += thisPlayer.game.gravity;
-    // }
   }
 }
 
