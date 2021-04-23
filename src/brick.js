@@ -50,14 +50,15 @@ class Brick {
       thisBrick.game.player.position.y =
         thisBrick.position.y - thisBrick.game.player.height;
     }
-    if ((playerBootom = brickTop)) {
-      thisBrick.game.player.onGround = true;
-      thisBrick.game.player.jumpSpeed.y = 0;
-    } else {
-      thisBrick.game.player.onGround = true;
-      thisBrick.game.player.jumpSpeed.y *= thisPlayer.game.airResitance;
-      thisBrick.game.player.speedX += thisPlayer.game.gravity;
-    }
+
+    // if ((playerBootom = brickTop)) {
+    //   thisBrick.game.player.onGround = true;
+    //   thisBrick.game.player.jumpSpeed.y = 0;
+    // } else {
+    //   thisBrick.game.player.onGround = true;
+    //   thisBrick.game.player.jumpSpeed.y *= thisPlayer.game.airResitance;
+    //   thisBrick.game.player.speedX += thisPlayer.game.gravity;
+    // }
   }
 }
 

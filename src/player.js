@@ -59,23 +59,19 @@ class Player {
       //stop when hit roof
       thisPlayer.position.y = 0;
     }
+
     if (thisPlayer.position.y + thisPlayer.height > thisPlayer.gameHeight) {
       thisPlayer.position.y = thisPlayer.gameHeight - thisPlayer.height;
     }
 
-    // gravity checks
+    //TODO: gravity checks
 
     if (thisPlayer.onGround) {
       thisPlayer.speedX *= thisPlayer.game.groundFriction;
     } else {
-      // thisPlayer.speedX += thisPlayer.game.gravity;
-      // thisPlayer.speedY *= thisPlayer.game.airResitance;
-      console.log((thisPlayer.speedY *= thisPlayer.game.airResitance), 'air');
-      console.log((thisPlayer.speedX += thisPlayer.game.gravity), 'gravity');
+      thisPlayer.speedY += thisPlayer.game.gravity;
+      thisPlayer.speedY *= thisPlayer.game.airResitance;
     }
-
-    thisPlayer.position.x += thisPlayer.speedX;
-    thisPlayer.position.y += thisPlayer.speedY;
   }
 
   moveLeft() {
