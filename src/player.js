@@ -1,3 +1,5 @@
+import { collisionDetection } from './collision';
+
 class Player {
   constructor(game) {
     const thisPlayer = this;
@@ -99,8 +101,5 @@ class Player {
     thisPlayer.speedY -= thisPlayer.game.gravity;
   }
 }
-
-//TODO:
-/* gravity checkcs and jump */
 
 export default Player;

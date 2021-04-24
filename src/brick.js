@@ -1,4 +1,4 @@
-// import { collisionDetection } from './collision';
+import { collisionDetection } from './collision';
 
 class Brick {
   constructor(game, position) {
@@ -26,31 +26,7 @@ class Brick {
 
   update() {
     const thisBrick = this;
-
-    //* * brick player collison checks
-    let playerBootom =
-      thisBrick.game.player.position.y + thisBrick.game.player.height;
-    let playerTop = thisBrick.game.player.position.y;
-    let playerLeft = thisBrick.game.player.position.x;
-    let playerRight =
-      thisBrick.game.player.position.x + thisBrick.game.player.width;
-
-    //* *   brick position
-    let brickTop = thisBrick.position.y;
-    let brickBottom = thisBrick.position.y + thisBrick.height;
-    let brickLeft = thisBrick.position.x - thisBrick.game.player.width;
-    let brickRight =
-      thisBrick.position.x + thisBrick.width + thisBrick.game.player.width;
-
-    if (
-      playerBootom >= brickTop &&
-      playerTop <= brickBottom &&
-      playerLeft >= brickLeft &&
-      playerRight <= brickRight
-    ) {
-      thisBrick.game.player.position.y =
-        thisBrick.position.y + thisBrick.gap - thisBrick.game.player.height;
-    }
+    collisionDetection(thisBrick.game.player, thisBrick);
   }
 }
 
