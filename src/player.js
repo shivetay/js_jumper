@@ -86,8 +86,9 @@ class Player {
     thisPlayer.speedX = thisPlayer.maxSpeed;
   }
   moveDown() {
+    //* decrese player height
     const thisPlayer = this;
-    thisPlayer.speedY = thisPlayer.maxSpeed;
+    thisPlayer.height = 15;
   }
 
   moveUp() {

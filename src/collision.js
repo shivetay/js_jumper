@@ -10,8 +10,9 @@ export const collisionDetection = (player, gameObejct) => {
   let objectBottom = gameObejct.position.y + gameObejct.height;
   let objectLeft = gameObejct.position.x - player.width;
   let objectRight = gameObejct.position.x + gameObejct.width + player.width;
-  let objectLeftBottom =
-    gameObejct.position.x - gameObejct.height - player.width;
+  let objectLeftSide = gameObejct.position.x - player.width;
+  let objectRightSide =
+    gameObejct.position.x - gameObejct.height + player.width;
 
   //* * brick player collison checks
   if (
@@ -21,5 +22,15 @@ export const collisionDetection = (player, gameObejct) => {
     playerRight <= objectRight
   ) {
     player.position.y = gameObejct.position.y + gameObejct.gap - player.height;
+  }
+
+  //* sied checks
+  if (
+    playerLeft >= objectRightSide &&
+    playerLeft >= objectLeft &&
+    playerRight === objectLeftSide &&
+    playerRight <= objectRight
+  ) {
+    player.position.x = gameObejct.position.x + player.width;
   }
 };

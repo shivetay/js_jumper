@@ -46,7 +46,8 @@ class InputHandler {
 
         // down
         case 40:
-          player.stop();
+          //* change player height to normal height
+          player.height = 25;
           break;
 
         default:
